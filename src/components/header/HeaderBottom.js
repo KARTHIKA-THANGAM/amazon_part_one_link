@@ -27,18 +27,18 @@ const HeaderBottom = () => {
           <MenuIcon />
           All
         </li>
-        <li className="headerHover">Today's Deals</li>
-        <li className="headerHover">Customer Service</li>
-        <li className="headerHover">Gift Cards</li>
-        <li className="headerHover">Registry</li>
-        <li className="headerHover">Sell</li>
+        <li className="headerHover hidden md:inline-flex">Today's Stock</li>
+        <li className="headerHover hidden md:inline-flex">Customer Service</li>
+        <li className="headerHover hidden md:inline-flex">Gift Cards</li>
+        <li className="headerHover hidden md:inline-flex">Registry</li>
+        <li className="headerHover hidden md:inline-flex">Sell</li>
       </ul>
       {/* ============ ListItems End here ============== */}
       {/* ============ sideNav Start here ============== */}
       {sidebar && (
         <div className="w-full h-screen text-black fixed top-0 left-0 bg-amazon_blue bg-opacity-50">
           <div className="w-full h-full relative">
-            <motion.div ref={ref} initial={{x:-500,opacity:0}} animate={{x:0, opacity:1}} transition={{duration:.5}} className="w-[350px] h-full bg-white border border-black">
+            <motion.div ref={ref} initial={{x:-500,opacity:0}} animate={{x:0, opacity:1}} transition={{duration:.5}} className="w-[80%] md:w-[350px] h-full bg-white border border-black">
               <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4">
                 <AccountCircleIcon />
                 <h3 className="font-titleFont font-bold text-lg tracking-wide">
@@ -46,16 +46,21 @@ const HeaderBottom = () => {
                 </h3>
               </div>
               <SideNavContent
-                title="Digital Content & Devices"
-                one="Amazon Music"
-                two="Kindle E-readers & Books"
-                three="Amazon Appstore"
+                title="Trending"
+                one="Best Sellers"
+                two="New Stock"
               />
               <SideNavContent
-                title="Shop By Department"
-                one="Electronics"
-                two="Computers"
-                three="Smart Home"
+                title="Storage"
+                one="Fertilizers"
+                two="Seeds"
+                three="Liquid Medicine"
+              />
+              <SideNavContent
+                title="Shop By Category"
+                one="Organic Substances"
+                two="Mineral Fertilizers"
+                three="Hybrid Seeds"
               />
               <SideNavContent
                 title="Programs & Features"
@@ -69,7 +74,11 @@ const HeaderBottom = () => {
                 two="Customer Service"
                 three="Contact us"
               />
-            <span onClick={()=>setSidebar(false)} className="cursor-pointer absolute top-0 left-[360px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-500 hover:text-white duration-300">
+            <span onClick={()=>setSidebar(false)} 
+            className="cursor-pointer absolute top-0 left-[360px] w-10 h-10
+             text-black flex items-center justify-center border bg-gray-200
+              hover:bg-red-500 hover:text-white duration-300"
+            >
               <CloseIcon />
             </span>
             </motion.div>
