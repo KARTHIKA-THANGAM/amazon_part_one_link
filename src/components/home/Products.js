@@ -5,9 +5,13 @@ import ApiIcon from "@mui/icons-material/Api";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { ShoppingCart } from '@mui/icons-material';
+import { ShoppingCart} from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/farmerSlice';
+
 
 const Products = () => {
+    const dispatch =useDispatch()
     const data = useLoaderData()
     const productData = data.data;
   return (
@@ -21,10 +25,10 @@ const Products = () => {
             <img className="w-52 h-64 object-contain" src={item.image} alt="ProductImg"/>
             <ul className="w-full h-36 bg-gray-100 absolute bottom-0 flex flex-col items-end justify-center gap-2 font-titleFont 
             px-2 border-l border-r group-hover:bottom-0 duration-700">
-              <li clasName="productLi">Compare <span><ApiIcon/></span></li>
-              <li clasName="productLi">Add to Cart <span><ShoppingCartIcon/></span></li>
-              <li clasName="productLi">View Details{" "} <span><ArrowCircleRightIcon/></span></li>
-              <li clasName="productLi">Add to Wish List <span><FavoriteIcon/></span></li>
+              <li className="productLi">Compare <span><ApiIcon/></span></li>
+              <li className="productLi">Add to Cart <span><ShoppingCartIcon/></span></li>
+              <li className="productLi">View Details{" "} <span><ArrowCircleRightIcon/></span></li>
+              <li className="productLi">Add to Wish List <span><FavoriteIcon/></span></li>
             </ul>
           </div>
           <div className="px-4 z-10 bg-white">
@@ -42,8 +46,17 @@ const Products = () => {
             <StarIcon/>
           </div>
           </div>
-            <button className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300
-             hover:to-yellow-boredr-yellow-500 hover:boredr-yellow-700 active:bg-gradient-to-b1 active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">Add to cart </button>          </div>
+            <button onClick ={() =>dispatch(addToCart({
+              id:item?.id,
+              title:item?.title,
+              description:item?.description,
+              price:item?.price,
+              category:item?.category,
+              image:item?.image,
+              quantity:1,
+            }))}className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300
+             hover:to-yellow-boredr-yellow-500 hover:boredr-yellow-700 active:bg-gradient-to-b1 active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
+              Add to cart </button> </div>
           </div>
          ))
        

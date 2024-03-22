@@ -6,10 +6,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import {logo} from "../../assets/index"
 import { allItems } from '../../constants';
 import HeaderBottom from './HeaderBottom';
+import {Link} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
     const [showAll,setShowAll]=useState(false)
-   
+    const products = useSelector((state)=> state.farmerReducer.products);
   return (
     <div className='w-full sticky top-0 z-50'>
       <div className="w-full bg-amazon_blue text-white px-4 py-3 flex items-center gap-4">
@@ -62,7 +64,7 @@ const Header = () => {
         </div>
         {/* ============ Search End here ================= */}
         {/* ============ Signin Start here =============== */}
-       {/*<Link to="/signin">*/}
+       <Link to="/signin">
         <div className="flex flex-col items-start justify-center headerHover">
           <p className=" text-sm mdl:text-xs text-white mdl:text-lightText font-light">Hello, sign in</p>
           <p className="text-sm font-semibold -mt-1 text-whiteText hidden mdl:inline-flex">
@@ -72,7 +74,7 @@ const Header = () => {
             </span>
           </p>
         </div>
-        {/*</div></Link>*/}
+        </Link>
         {/* ============ Signin End here ================= */}
         {/* ============ Orders Start here =============== */}
         <div className="hidden lgl:flex flex-col items-start justify-center headerHover">
@@ -84,7 +86,10 @@ const Header = () => {
         <div className="flex items-start justify-center headerHover relative">
           <ShoppingCartIcon />
           <p className="text-xs font-semibold mt-3 text-whiteText">
-            Cart <span className='absolute text-xs -top-1 left-6 font-semibold p-1 h-4 bg-[#f3a847] text-amazon_blue rounded-full flex justify-center items-center'>0</span>
+            Cart{" "}
+             <span className='absolute text-xs -top-1 left-6 font-semibold p-1 h-4 bg-[#f3a847] text-amazon_blue rounded-full flex justify-center items-center'>
+            {products.length > 0 ? products.length: 0}
+            </span>
           </p>
         </div>
         {/* ============ Cart End here =================== */}
