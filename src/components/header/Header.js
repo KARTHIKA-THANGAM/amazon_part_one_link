@@ -16,9 +16,12 @@ const Header = () => {
     <div className='w-full sticky top-0 z-50'>
       <div className="w-full bg-amazon_blue text-white px-4 py-3 flex items-center gap-4">
         {/* ============ Image Start here ================ */}
-        <div className="headerHover">
+      <Link to ='/'>
+      <div className="headerHover">
           <img className="w-24 mt-2" src={logo} alt="logo" />
         </div>
+      </Link>
+        
         {/* ============ Image End here ================== */}
         {/* ============ Deliver Start here ============== */}
         <div className="headerHover hidden mdl:inline-flex">
@@ -83,6 +86,7 @@ const Header = () => {
         </div>
         {/* ============ Orders End here ================= */}
         {/* ============ Cart Start here ================= */}
+        <Link to='/cart'>
         <div className="flex items-start justify-center headerHover relative">
           <ShoppingCartIcon />
           <p className="text-xs font-semibold mt-3 text-whiteText">
@@ -92,6 +96,7 @@ const Header = () => {
             </span>
           </p>
         </div>
+        </Link>
         {/* ============ Cart End here =================== */}
       </div>
       <HeaderBottom />
