@@ -6,7 +6,7 @@ const initialState = {
 }
 
 export const farmerSlice = createSlice({
-    name:"Farmer",
+    name:"farmer",
     initialState,
     reducers:{
         addToCart:(state,action) => {
@@ -18,8 +18,27 @@ export const farmerSlice = createSlice({
             else{
                 state.products.push(action.payLoad);
             }
+        },
+        incrementQuantity:(state,action)=>{
+            const item =state.products.find((item)=>item.id===action.payLoad)
+            item.quantity++
+        },
+        decrementQuantity:(state,action)=>{
+            const item =state.products.find((item)=>item.id===action.payLoad);
+            if(item.quantity==1){
+                item.quantity=1
+            }
+            else{
+                item.quantity--
+            }
+        },
+        deleteItem:(state,action)=>{
+            state.products=state.products.filter((item)=>item.id!==action.payLoad)
+        },
+        resetCart:(state)=>{
+            state.products=[]
         }
     }
 })
-export const{addToCart}= farmerSlice.actions;
+export const{addToCart,deleteItem,resetCart,incrementQuantity,decrementQuantity}= farmerSlice.actions;
 export default farmerSlice.reducer;
